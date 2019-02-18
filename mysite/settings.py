@@ -31,13 +31,15 @@ ALLOWED_HOSTS = ['127.0.0.1','.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    'user.apps.UserConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +122,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR,'static')
+CRISPY_TEMPLATE_PACK='bootstrap4'
+LOGIN_REDIRECT_URL='blog-home'
