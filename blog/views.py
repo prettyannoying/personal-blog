@@ -59,3 +59,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 		if self.request.user==post.author:
 			return True
 		return False
+
+def error_404_view(request, exception):
+    data = {"name": "What?"}
+    return render(request,'blog/404.html', data)

@@ -25,6 +25,14 @@
         display: block;
     }
 
+    .centered {
+  		position: fixed;
+  		top: 50%;
+  		left: 50%;
+  		/* bring your own prefixes */
+  		transform: translate(-50%, -50%);
+	}
+
     @media screen and (max-width: 500px) {
         .code-area {
 			font-size: 5vw;
@@ -39,7 +47,8 @@
 
   </style>
 
-	<div class="code-area">
+	<div class="centered">
+		<span style="color: #ffffff">It's a 404, lurker!<br/></span>
 		<span style="color: #a6a61f">(O_o) (O_o) (O_o) (O_o)</span>
 	</div>
 
