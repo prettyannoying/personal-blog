@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404,redirect
 from .models import Post
 from django.utils import timezone
 from .forms import PostForm
+from django.template.defaultfilters import slugify
+from .unique_slug import unique_slugify
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
 	ListView, 
@@ -28,6 +30,7 @@ class PostListView(ListView):
 
 class PostDetailView(DetailView):
 	model=Post
+	fields=['title', 'blog_data', 'slug']	
 
 class PostCreateView(LoginRequiredMixin, CreateView):
 	model=Post
@@ -35,6 +38,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 	#redirect_field_name='/login/'
 	def form_valid(self,form):
 		form.instance.author=self.request.user
+		form.instance.slug=unique_slugify(form.instance, form.instance.title)
 		return super().form_valid(form)
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

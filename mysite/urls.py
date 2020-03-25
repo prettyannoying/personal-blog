@@ -21,10 +21,11 @@ from django.contrib.auth import views as auth_views
 
 handler404 = 'blog.views.error_404_view'
 urlpatterns = [
+    path(r'tinymce/', include('tinymce.urls')),
     path('admin/', admin.site.urls),
     path('',include('blog.urls')),
-    path('login/',auth_views.LoginView.as_view(template_name='user/login.html'),name='login'),
-    path('logout/',auth_views.LogoutView.as_view(template_name='user/logout.html'), name='logout'),
+    path('into-the-woods/',auth_views.LoginView.as_view(template_name='user/login.html'),name='login'),
+    path('out-of-the-woods/',auth_views.LogoutView.as_view(template_name='user/logout.html'), name='logout'),
     #path('register/',include('user_views.register'),name='register'),
 
 ]
